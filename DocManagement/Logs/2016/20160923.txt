@@ -1,0 +1,6 @@
+[2016-09-23 12:29:13] - Plantilla 1 Subproceso anulado.
+[2016-09-23 12:30:04] - Plantilla 1 Subproceso anulado.
+[2016-09-23 12:35:40] - Plantilla 1 Subproceso anulado.
+[2016-09-23 12:36:52] - Plantilla 1 Subproceso anulado.
+[2016-09-23 12:37:18] - Plantilla 1 Subproceso anulado.
+[2016-09-23 12:38:39] - Plantilla 1 Subproceso anulado.

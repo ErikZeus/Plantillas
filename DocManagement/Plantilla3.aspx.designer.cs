@@ -10,7 +10,7 @@
 namespace DocManagement {
     
     
-    public partial class Pruebas {
+    public partial class Plantilla3 {
         
         /// <summary>
         /// form1 control.

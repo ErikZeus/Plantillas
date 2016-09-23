@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Pruebas.aspx.cs" Inherits="DocManagement.Pruebas" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Plantilla2.aspx.cs" Inherits="DocManagement.Plantilla2" %>
 
 <!DOCTYPE html>
 

@@ -7,98 +7,20 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Collections;
 using System.Text;
-using System.Data.OleDb;
-using System.Diagnostics;
-using Microsoft.VisualBasic;
+using System.Data.SqlClient; 
 using System.Security.Cryptography;
 using System.Configuration;
 using System.IO;
 using System.Web.Configuration;
-using System.Net.Mail;
-using System.Xml;
-using Npgsql;
-using MySql;
-
+ 
+ 
 namespace Cotizador
 {
     public class AccesoDatos
     {
-        public string  EjecutaQueryNpgsql(string _sql)
-        {
+ 
+ 
 
-            string msg = "";
-            try
-            {
-                NpgsqlConnection cnn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["cnnPostgres"].ToString());
-                // Define a query
-                NpgsqlCommand cmd = new NpgsqlCommand(_sql, cnn);
-                cmd.CommandType = CommandType.Text;
-                cnn.Open();
-                cmd.ExecuteNonQuery();
-                cnn.Close();
-                return "Terminado";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message.ToString() ;
-            }
-        }
-        public string EjecutaQueryRegresaCadenaNpgsql(string _sql)
-        {
-            DataTable content = new DataTable();
-            string retorna = "";
-
-            try
-            {
-                NpgsqlConnection cnn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["cnnPostgres"].ToString());
-                // Define a query
-                NpgsqlCommand cmd = new NpgsqlCommand(_sql, cnn);
-                NpgsqlDataAdapter adpt = new NpgsqlDataAdapter(cmd);
-
-                cmd.CommandType = CommandType.Text;
-                cnn.Open();
-                adpt.Fill(content);
-                cnn.Close();
-
-                foreach (DataRow rw in content.Rows)
-	            {
-                    retorna = rw[0].ToString();
-                    break;
-	           }
-
-
-                return retorna;
-            }
-            catch (Exception ex)
-            {
-              return  "Error: " + ex.Message.ToString();
-            }
-        }
-        public DataTable  RegresaTablaNpqsql(string _sql)
-        {
-            DataTable content = new DataTable();
-            string msg = "";
-            try
-            {
-                NpgsqlConnection cnn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["cnnPostgres"].ToString());
-                // Define a query
-                NpgsqlCommand cmd = new NpgsqlCommand(_sql, cnn);
-                NpgsqlDataAdapter adpt = new NpgsqlDataAdapter(cmd);
-
-                cmd.CommandType = CommandType.Text;
-                cnn.Open();
-                adpt.Fill(content);
-                cnn.Close();
-
-                return content;
-            }
-            catch (Exception ex)
-            {
-                return content;
-            }
-    
-          
-        }
         public static string RegresaCadena_1_ResultadoMysql(string sql)
         {
 
@@ -151,7 +73,59 @@ namespace Cotizador
             cnn.Close();
 
         }
+        public static string RegresaCadena_1_ResultadoSql(string sql)
+        {
 
+            System.Data.SqlClient.SqlConnection cnn = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["cnnSql"].ToString());
+
+            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.Text;
+            System.Data.SqlClient.SqlDataAdapter adpt = new System.Data.SqlClient.SqlDataAdapter(cmd);
+            System.Data.DataTable content = new System.Data.DataTable();
+
+            cnn.Open();
+            adpt.Fill(content);
+            cnn.Close();
+
+            string result = "";
+            foreach (DataRow rw in content.Rows)
+            {
+                result = rw[0].ToString();
+                break;
+            }
+
+            return result;
+        }
+
+        public static DataTable RegresaTablaSql(string sql)
+        {
+
+            System.Data.SqlClient.SqlConnection cnn = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["cnnSql"].ToString());
+
+            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.Text;
+            System.Data.SqlClient.SqlDataAdapter adpt = new System.Data.SqlClient.SqlDataAdapter(cmd);
+            System.Data.DataTable content = new System.Data.DataTable();
+
+            cnn.Open();
+            adpt.Fill(content);
+            cnn.Close();
+
+            return content;
+        }
+
+        public static void EjecutaQuerySql(string sql)
+        {
+
+            System.Data.SqlClient.SqlConnection cnn = new System.Data.SqlClient.SqlConnection(ConfigurationManager.ConnectionStrings["cnnSql"].ToString());
+            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand(sql, cnn);
+            cmd.CommandType = CommandType.Text;
+
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+
+        }
 
     }
 }

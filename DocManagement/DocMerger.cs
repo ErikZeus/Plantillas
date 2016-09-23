@@ -137,21 +137,21 @@ public class DocMerger
        DocMerger.Merge(arrFiles, strOutDoc,true, strOrgDoc);
     }
 
-    private void Plantilla1(string IdCliente)
+    public  void CorrePlantilla1(string IdCliente)
     {
         try
         {
+            Plantillas Marco = new Plantillas();
 
             Object oMissing = System.Reflection.Missing.Value;
-            Object oTemplatePath = @"C:\Proyecto Administrador Doc Word\DocManagement\Files\OriginalDoc\CartaPremio1.docx";
+            Object oTemplatePath = Marco.listado[0].UbicacionPlantilla;
             Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
             Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
             wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
             wordDoc.Activate();
             FindAndReplace(wordApp, "{id}", IdCliente);
-            wordDoc.SaveAs(@"C:\Proyecto Administrador Doc Word\DocManagement\Files\OriginalDoc\CartaPremioNuevo.docx");
+            wordDoc.SaveAs(Marco.listado[0].UbicacionMerge + IdCliente + ".docx");
         
-
         }
         catch (Exception ex)
         {
@@ -165,16 +165,17 @@ public class DocMerger
 
 public class Plantilla
 {
+    public int id = 0;
     public string  NombrePlantilla = "";
     public string UbicacionPlantilla = "";
-    public int id = 0;
     public string UbicacionMerge = "";
-
-    public Plantilla(string _NombrePlantilla, string _UbicacionPlantilla, int _id, string _UbicacionMerge) {
+    public string Direccion = "";
+    public Plantilla(int _id, string _NombrePlantilla, string _UbicacionPlantilla,  string _UbicacionMerge, string _Direccion) {
+        id = _id;
         NombrePlantilla = _NombrePlantilla;
         UbicacionPlantilla = _UbicacionPlantilla;
-        id = _id;
         UbicacionMerge = _UbicacionMerge;
+        Direccion = _Direccion;
     }
  
 }
@@ -184,53 +185,15 @@ public class Plantillas
     public int NumeroPlantillas = 3;
 
     public List<Plantilla> listado = new List<Plantilla>(new Plantilla[] {
-        new Plantilla("Plantilla Carta1","files/OriginalDoc/CartaPremio1.docx",1,"files/Copies/CartaPremio1.docx"),
-        new Plantilla("Plantilla Carta2","files/OriginalDoc/CartaPremio2.docx",2,"files/Copies/CartaPremio2.docx"),
-        new Plantilla("Plantilla Carta3","files/OriginalDoc/CartaPremio3.docx",3,"files/Copies/CartaPremio2.docx") });
-
+        new Plantilla(1,"Plantilla Carta1", @"C:\Proyecto Administrador Doc Word\DocManagement\Files\OriginalDoc\CartaPremio1.docx",@"C:\Proyecto Administrador Doc Word\DocManagement\Files\Copies\","../Plantilla1.aspx"),
+        new Plantilla(2,"Plantilla Carta2", @"C:\Proyecto Administrador Doc Word\DocManagement\Files\OriginalDoc\CartaPremio2.docx",@"C:\Proyecto Administrador Doc Word\DocManagement\Files\Copies\","../Plantilla2.aspx"),
+        new Plantilla(3,"Plantilla Carta3", @"C:\Proyecto Administrador Doc Word\DocManagement\Files\OriginalDoc\CartaPremio3.docx",@"C:\Proyecto Administrador Doc Word\DocManagement\Files\Copies\","../Plantilla3.aspx" ) });
 }
 
-public class Helper
-{
 
-    public static void RegistrarEvento(string EventoInfo)
-    {
-        string YearFolder = System.DateTime.Now.Year.ToString();
-        string LogFolderDir = Path.Combine(System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath + "/Logs", YearFolder);
-        string LogFileName = Path.Combine(LogFolderDir, System.DateTime.Now.ToString("yyyyMMdd") + ".txt");
-        FileStream fs = default(FileStream);
-        StreamWriter sw = default(StreamWriter);
 
-        try
-        {
-            if (!Directory.Exists(LogFolderDir))
-            {
-                Directory.CreateDirectory(LogFolderDir);
-            }
 
-            if (!File.Exists(LogFileName))
-            {
-                fs = File.Create(LogFileName);
-            }
-            else
-            {
-                fs = new FileStream(LogFileName, FileMode.Append, FileAccess.Write);
-            }
 
-            sw = new StreamWriter(fs);
-
-            sw.WriteLine("[{0}] - {1}", System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), EventoInfo);
-
-            sw.Close();
-            fs.Close();
-
-        }
-        catch (Exception ex)
-        {
-        }
-    }
-
-}
 
 
 
