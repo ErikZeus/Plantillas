@@ -14,8 +14,7 @@ using System.IO;
 using System.Web.Configuration;
  
  
-namespace Cotizador
-{
+ 
     public class AccesoDatos
     {
  
@@ -128,7 +127,7 @@ namespace Cotizador
         }
 
     }
-}
+ 
 public class Encript
 {
     /// <summary>

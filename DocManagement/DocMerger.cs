@@ -35,6 +35,14 @@ public class DocMerger
             ref matchKashida, ref matchDiacritics, ref matchAlefHamza, ref matchControl);
     }
 
+    public System.Data.DataTable InfoCliente(string _id)
+    {
+        //select nombre + ' ' + segundo_nombre + ' ' + apellido + ' ' + segundo_apellido as NombreCompleto,nombre + ' ' + apellido as NombreApellido,nombre + ' ' + segundo_nombre as Nombres,apellido + ' ' + segundo_apellido as Apellidos,fechanac , cedula, ruc, direccion from clientes where cliente = 1
+       System.Data.DataTable content = new System.Data.DataTable();
+       content = AccesoDatos.RegresaTablaSql("select nombre + ' ' + segundo_nombre + ' ' + apellido + ' ' + segundo_apellido as NombreCompleto,nombre + ' ' + apellido as NombreApellido,nombre + ' ' + segundo_nombre as Nombres,apellido + ' ' + segundo_apellido as Apellidos,fechanac , cedula, ruc, direccion from clientes where cliente = " + _id);
+       return content;
+    }
+
     /// <summary>
     /// A function that merges Microsoft Word Documents that uses a template specified by the user
     /// </summary>
@@ -149,7 +157,14 @@ public class DocMerger
             Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
             wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
             wordDoc.Activate();
-            FindAndReplace(wordApp, "{id}", IdCliente);
+            System.Data.DataTable content = InfoCliente(IdCliente);
+            foreach (System.Data.DataRow rw in content.Rows)
+            {
+                FindAndReplace(wordApp, "{id}", rw["Nombres"]);
+
+                break;
+            }
+           
             wordDoc.SaveAs(Marco.listado[0].UbicacionMerge + IdCliente + ".docx");
         
         }
