@@ -8,12 +8,28 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
-    
-    </div>
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <div style="float: left;">
+
+            <h1>Unity Promotores Plantillas Corporativas<asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            </h1>
+
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    <div>
+                        <a>Bajando Archivo Id Cliente : </a>
+                        <asp:Label ID="lblCliente" runat="server" Text="."></asp:Label>
+                    </div>
+                    <div><a>Haga click en la plantilla que va a utilizar.</a></div>
+                    <div class="datagrid">
+                        <asp:Table id="Table1" BorderWidth="1" GridLines="Both" runat="server" Width="100%" Font-Bold="True" />
+                    </div>
+ 
+
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+        </div>
     </form>
 </body>
 </html>

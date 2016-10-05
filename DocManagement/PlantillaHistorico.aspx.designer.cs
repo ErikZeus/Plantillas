@@ -10,7 +10,7 @@
 namespace DocManagement {
     
     
-    public partial class Plantilla2 {
+    public partial class PlantillaHistorico {
         
         /// <summary>
         /// form1 control.

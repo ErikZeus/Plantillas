@@ -10,7 +10,7 @@
 namespace DocManagement {
     
     
-    public partial class Plantilla3 {
+    public partial class Plantilla4 {
         
         /// <summary>
         /// form1 control.
@@ -20,14 +20,5 @@ namespace DocManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
     }
 }

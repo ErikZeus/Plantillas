@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-
 using Microsoft.Office.Interop.Word;
+
+
 
 namespace DocManagement
 {
@@ -15,11 +16,15 @@ namespace DocManagement
             try
             {
                 string _id = Request.QueryString["Id"].ToString();
-                DocMerger Doc = new DocMerger();
-                Doc.CorrePlantilla1(_id);
-                Plantillas Marco = new Plantillas();
+                string cliente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cliente from CartasClientes where indice = " + _id);
 
-                Response.Redirect(Marco.listado[0].UbicacionMerge + _id + ".docx");
+                DocMerger Doc = new DocMerger();
+                string archivo = Server.MapPath(".");
+                Doc.CorrePlantilla1(_id, archivo);
+                Plantillas Marco = new Plantillas();
+                
+                Response.Redirect(archivo + Marco.listado[0].UbicacionMerge + cliente + ".docx");
+
             }
             catch (Exception es)
             {

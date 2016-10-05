@@ -124,6 +124,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Plantilla4.aspx" />
+    <Content Include="Plantilla5.aspx" />
+    <Content Include="Plantilla6.aspx" />
+    <Content Include="PlantillaHistorico.aspx" />
     <Content Include="Plantilla.aspx" />
     <Content Include="Plantilla3.aspx" />
     <Content Include="Plantilla2.aspx" />
@@ -138,6 +142,34 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Plantilla4.aspx.cs">
+      <DependentUpon>Plantilla4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plantilla4.aspx.designer.cs">
+      <DependentUpon>Plantilla4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plantilla5.aspx.cs">
+      <DependentUpon>Plantilla5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plantilla5.aspx.designer.cs">
+      <DependentUpon>Plantilla5.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Plantilla6.aspx.cs">
+      <DependentUpon>Plantilla6.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Plantilla6.aspx.designer.cs">
+      <DependentUpon>Plantilla6.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlantillaHistorico.aspx.cs">
+      <DependentUpon>PlantillaHistorico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlantillaHistorico.aspx.designer.cs">
+      <DependentUpon>PlantillaHistorico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Plantilla.aspx.cs">
       <DependentUpon>Plantilla.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
