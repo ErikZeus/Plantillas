@@ -14,25 +14,8 @@ namespace LlamadaParaPruebas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (this.txtAsistente.Text == "")
-            { MessageBox.Show("Debe llenar quien asistio al cliente.");  return; }
-
-            if (this.txtPoliza.Text == "")
-            { MessageBox.Show("Debe llenar el dato de la poliza."); return; }
-
-            if (this.txtCodigoCliente.Text == "")
-            { MessageBox.Show("Debe llenar el codigo del cliente."); return; }
-
-            if (this.txtCodigoCliente.Text == "")
-            { MessageBox.Show("Debe llenar el cuerpo del mensaje principal."); return; }
-
-   
-            AccesoDatos.EjecutaQuerySql("insert into CartasClientes(cliente, fecha, cuerpo, poliza, asistente) values('"+ txtCodigoCliente.Text +"', getdate() , '"+ this.txtCuerpo.Text +"', '"+ this.txtPoliza.Text +"', '"+ this.txtAsistente.Text + "');");
-            string identificador = AccesoDatos.RegresaCadena_1_ResultadoSql("Select max(indice) from CartasClientes;");
-            string url = "http://localhost:53816/Plantilla.aspx?id=" + identificador;
-
-      
-            this.webBrowser1.Navigate(url);
+ 
+    
 
         }
 
@@ -48,8 +31,7 @@ namespace LlamadaParaPruebas
         private void button2_Click(object sender, EventArgs e)
         {
 
-            this.txtCuerpo.Text = "El Pico de Orizaba es una montaña prominente que se localiza en los estados de Puebla y Tlaxcala, México. Ésta se localiza sobre un basamento volcánico de enormes dimensiones y tiene más de un millón y medio de años de antigüedad. En el flanco norte del Pico de Orizaba abundan las navajillas de obsidiana, en el sur destaca la presencia de cerámica que marcan una ruta o camino procesional que conduce a cotas más altas hasta la cumbre. En el oriente el sitio OR-13 muestra un xicalli, cerámica abundante de distintas formas y tipos, además de navajillas de obsidiana. " +
-             "  " + " Extracto del Libro Mexico Colinas y Relieve.";
+            this.txtParrafo1.Text = "El Pico de Orizaba es una montaña prominente que se localiza en los estados de Puebla y Tlaxcala, México. Ésta se localiza sobre un basamento volcánico de enormes dimensiones y tiene más de un millón y medio de años de antigüedad.";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -59,7 +41,7 @@ namespace LlamadaParaPruebas
                 return;
 
             }
-            this.dataGridView1.DataSource = AccesoDatos.RegresaTablaSql("Select indice as id, fecha, poliza from CartasClientes where cliente = " + this.txtIdCliente.Text ); ;
+            this.dataGridView1.DataSource = AccesoDatos.RegresaTablaSql("Select indice as id, fecha, poliza, parrafo1, parrafo2, parrafo3 from CartasClientes where cliente = " + this.txtIdCliente.Text ); ;
 
         }
 
@@ -71,11 +53,34 @@ namespace LlamadaParaPruebas
             string url = "http://localhost:53816/PlantillaHistorico.aspx?id=" + identificador;
 
             this.webBrowser1.Navigate(url);
- 
-
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
 
+            if (this.txtPoliza.Text == "")
+            { MessageBox.Show("Debe llenar el dato de la poliza."); return; }
+
+            if (this.txtCodigoCliente.Text == "")
+            { MessageBox.Show("Debe llenar el codigo del cliente."); return; }
+
+
+            AccesoDatos.EjecutaQuerySql("insert into CartasClientes(cliente, fecha, poliza, parrafo1, parrafo2, parrafo3,tipo_carta) values('" + txtCodigoCliente.Text + "', getdate() , '" + this.txtPoliza.Text + "' ,'" + this.txtParrafo1.Text + "', '" + this.txtParrafo2.Text + "', '" + this.txtParrafo3.Text + "','Carta envío ramo 9')");
+            string identificador = AccesoDatos.RegresaCadena_1_ResultadoSql("Select max(indice) from CartasClientes;");
+            string codigo = AccesoDatos.RegresaCadena_1_ResultadoSql("DECLARE @myid uniqueidentifier = NEWID(); SELECT Replace(left(CONVERT(char(255), @myid),10),'-','8') + '-' + '" + identificador + "' AS 'char'; ");
+            AccesoDatos.EjecutaQuerySql("Update CartasClientes Set codigo = '" + codigo + "' where indice =" + identificador);
+
+            this.lblId.Text = identificador;
+            linkLabel1.Text = "Carta envío ramo 9";
+            string url = "http://localhost:53816/Plantilla1.aspx?id=" + identificador;
+            this.webBrowser1.Navigate(url);
+            MessageBox.Show("Estamos descargando su documento");
+        }
+
+        private void txtCodigoCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

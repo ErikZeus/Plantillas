@@ -5,6 +5,9 @@ using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
+using System.Drawing;
+using System.Web;
 
 /// <summary>
 /// Simple class to get a merged document based on a baseline document
@@ -156,8 +159,25 @@ public class DocMerger
             Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
             wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
             wordDoc.Activate();
+            Range docRange = wordDoc.Range();
+            string CodigoImagen = AccesoDatos.RegresaCadena_1_ResultadoSql("Select codigo from CartasClientes where indice = " + IdCliente);
+ 
+            Image DataImage = DevuelveImagen(CodigoImagen);
+            string path = HttpContext.Current.Server.MapPath("~/Files/Copies/" + CodigoImagen + ".bmp" );
+            DataImage.Save(path);
+            InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(path);
+            float scaledWidth = autoScaledInlineShape.Width;
+            float scaledHeight = autoScaledInlineShape.Height;
+            autoScaledInlineShape.Delete();
+
+            // Create a new Shape and fill it with the picture
+            Shape newShape = wordDoc.Shapes.AddShape(1, 85, 0, scaledWidth, scaledHeight);
+            newShape.Fill.UserPicture(path);
+
             System.Data.DataTable content = InfoCliente(CodigoCliente);
-            object cuerpo = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cuerpo from CartasClientes where indice = " + IdCliente);
+            string parrafo1 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo1 from CartasClientes where indice = " + IdCliente);
+            string parrafo2 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo2 from CartasClientes where indice = " + IdCliente);
+            string parrafo3 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo3 from CartasClientes where indice = " + IdCliente);
             string _poliza = AccesoDatos.RegresaCadena_1_ResultadoSql("Select poliza from CartasClientes where indice = " + IdCliente);
             string _asistente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select asistente from CartasClientes where indice = " + IdCliente);
             string _fecha = AccesoDatos.RegresaCadena_1_ResultadoSql("Select Fecha from CartasClientes where indice = " + IdCliente);
@@ -167,6 +187,602 @@ public class DocMerger
 
                 DateTime FechaT = DateTime.Parse(_fecha.Substring(0,10));
                 string _Fecha = "Guatemala " +  FechaT.Day.ToString() + " de " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(FechaT.Month) + " de " + FechaT.Year.ToString();
+                FindAndReplace(wordApp, "{Fecha}", _Fecha);
+                FindAndReplace(wordApp, "{Titulo}", rw["Titulo"]);
+                FindAndReplace(wordApp, "{NombreCompleto}", rw["NombreCompleto"]);
+                FindAndReplace(wordApp, "{Direccion}", rw["direccion"]);
+                FindAndReplace(wordApp, "{Apartado}", rw["Apartado"]);
+                FindAndReplace(wordApp, "{PolizasEjecutivo}", _poliza);
+                FindAndReplace(wordApp, "{Asistente}", _asistente);
+                FindAndReplace(wordApp, "{Parrafo1}", parrafo1);
+                if (parrafo2 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo2}", Environment.NewLine + parrafo2);
+                }
+
+                if (parrafo3 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo3}", Environment.NewLine + parrafo2);
+                }
+       
+
+                break;
+            }
+
+            //string[] arc = cuerpo.ToString().Split('.');
+            //int count = 1;
+            //int filas = arc.Length;
+
+            //string replace = "";
+
+            //foreach (string fl in arc)
+            //{
+
+            //    if (count > 5)
+            //    {
+            //        replace += fl;
+            //    }
+            //    else
+            //    {
+            //        FindAndReplace(wordApp, "{Parrafo" + count.ToString() + "}", fl.Trim() + ".");
+            //    }
+
+            //    count += 1;
+            //}
+
+            //FindAndReplace(wordApp, "{Parrafo6}", replace);
+            FindAndReplace(wordApp, "{Parrafo1}", "");
+            FindAndReplace(wordApp, "{Parrafo2}", "");
+            FindAndReplace(wordApp, "{Parrafo3}", "");
+            FindAndReplace(wordApp, "{Parrafo4}", "");
+            FindAndReplace(wordApp, "{Parrafo5}", "");
+            FindAndReplace(wordApp, "{Parrafo6}", "");
+            FindAndReplace(wordApp, "{Doc}","Doc corr." + IdCliente);
+            Object password = "UnitySecure";// 4ta posicion
+ 
+            wordDoc.SaveAs(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx", oMissing, true , oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, true, oMissing);
+            //, WdSaveFormat.wdFormatPDF, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+            // ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+
+            wordDoc.Close(true); // Close the Word Document.
+            wordApp.Quit(true); // Close Word Application.
+
+            Application objApp = new Application();
+            Document objDoc = objApp.Documents.Open(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx",
+                oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing);
+            objDoc.WritePassword = "UnitySecure"; //use WritePassword attribute to set password for modify file
+            objDoc.Save();
+
+        }
+        catch (Exception ex)
+        {
+
+            Helper.RegistrarEvento(ex.Message);
+
+        }
+    }
+
+    public void CorrePlantilla2(string IdCliente, string archivo)
+    {
+        try
+        {
+            Plantillas Marco = new Plantillas();
+            string CodigoCliente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cliente from CartasClientes where indice = " + IdCliente);
+            Object oMissing = System.Reflection.Missing.Value;
+            Object oTemplatePath = archivo + Marco.listado[0].UbicacionPlantilla;
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
+            wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
+            wordDoc.Activate();
+            Range docRange = wordDoc.Range();
+            string CodigoImagen = AccesoDatos.RegresaCadena_1_ResultadoSql("Select codigo from CartasClientes where indice = " + IdCliente);
+
+            Image DataImage = DevuelveImagen(CodigoImagen);
+            string path = HttpContext.Current.Server.MapPath("~/Files/Copies/" + CodigoImagen + ".bmp");
+            DataImage.Save(path);
+            InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(path);
+            float scaledWidth = autoScaledInlineShape.Width;
+            float scaledHeight = autoScaledInlineShape.Height;
+            autoScaledInlineShape.Delete();
+
+            // Create a new Shape and fill it with the picture
+            Shape newShape = wordDoc.Shapes.AddShape(1, 85, 0, scaledWidth, scaledHeight);
+            newShape.Fill.UserPicture(path);
+
+            System.Data.DataTable content = InfoCliente(CodigoCliente);
+            string parrafo1 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo1 from CartasClientes where indice = " + IdCliente);
+            string parrafo2 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo2 from CartasClientes where indice = " + IdCliente);
+            string parrafo3 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo3 from CartasClientes where indice = " + IdCliente);
+            string _poliza = AccesoDatos.RegresaCadena_1_ResultadoSql("Select poliza from CartasClientes where indice = " + IdCliente);
+            string _asistente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select asistente from CartasClientes where indice = " + IdCliente);
+            string _fecha = AccesoDatos.RegresaCadena_1_ResultadoSql("Select Fecha from CartasClientes where indice = " + IdCliente);
+
+            foreach (System.Data.DataRow rw in content.Rows)
+            {
+
+                DateTime FechaT = DateTime.Parse(_fecha.Substring(0, 10));
+                string _Fecha = "Guatemala " + FechaT.Day.ToString() + " de " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(FechaT.Month) + " de " + FechaT.Year.ToString();
+                FindAndReplace(wordApp, "{Fecha}", _Fecha);
+                FindAndReplace(wordApp, "{Titulo}", rw["Titulo"]);
+                FindAndReplace(wordApp, "{NombreCompleto}", rw["NombreCompleto"]);
+                FindAndReplace(wordApp, "{Direccion}", rw["direccion"]);
+                FindAndReplace(wordApp, "{Apartado}", rw["Apartado"]);
+                FindAndReplace(wordApp, "{PolizasEjecutivo}", _poliza);
+                FindAndReplace(wordApp, "{Asistente}", _asistente);
+                FindAndReplace(wordApp, "{Parrafo1}", parrafo1);
+                if (parrafo2 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo2}", Environment.NewLine + parrafo2);
+                }
+
+                if (parrafo3 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo3}", Environment.NewLine + parrafo2);
+                }
+
+
+                break;
+            }
+
+            //string[] arc = cuerpo.ToString().Split('.');
+            //int count = 1;
+            //int filas = arc.Length;
+
+            //string replace = "";
+
+            //foreach (string fl in arc)
+            //{
+
+            //    if (count > 5)
+            //    {
+            //        replace += fl;
+            //    }
+            //    else
+            //    {
+            //        FindAndReplace(wordApp, "{Parrafo" + count.ToString() + "}", fl.Trim() + ".");
+            //    }
+
+            //    count += 1;
+            //}
+
+            //FindAndReplace(wordApp, "{Parrafo6}", replace);
+            FindAndReplace(wordApp, "{Parrafo1}", "");
+            FindAndReplace(wordApp, "{Parrafo2}", "");
+            FindAndReplace(wordApp, "{Parrafo3}", "");
+            FindAndReplace(wordApp, "{Parrafo4}", "");
+            FindAndReplace(wordApp, "{Parrafo5}", "");
+            FindAndReplace(wordApp, "{Parrafo6}", "");
+            FindAndReplace(wordApp, "{Doc}", "Doc corr." + IdCliente);
+            Object password = "UnitySecure";// 4ta posicion
+
+            wordDoc.SaveAs(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx", oMissing, true, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, true, oMissing);
+            //, WdSaveFormat.wdFormatPDF, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+            // ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+
+            wordDoc.Close(true); // Close the Word Document.
+            wordApp.Quit(true); // Close Word Application.
+
+            Application objApp = new Application();
+            Document objDoc = objApp.Documents.Open(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx",
+                oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing);
+            objDoc.WritePassword = "UnitySecure"; //use WritePassword attribute to set password for modify file
+            objDoc.Save();
+
+        }
+        catch (Exception ex)
+        {
+
+            Helper.RegistrarEvento(ex.Message);
+
+        }
+    }
+
+    public Image Base64ToImage(string base64String)
+    {
+        // Convert base 64 string to byte[]
+        byte[] imageBytes = Convert.FromBase64String(base64String);
+        // Convert byte[] to Image
+        using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
+        {
+            Image image = Image.FromStream(ms, true);
+            return image;
+        }
+    }
+
+    public void CorrePlantilla3(string IdCliente, string archivo)
+    {
+        try
+        {
+            Plantillas Marco = new Plantillas();
+            string CodigoCliente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cliente from CartasClientes where indice = " + IdCliente);
+            Object oMissing = System.Reflection.Missing.Value;
+            Object oTemplatePath = archivo + Marco.listado[0].UbicacionPlantilla;
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
+            wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
+            wordDoc.Activate();
+            Range docRange = wordDoc.Range();
+            string CodigoImagen = AccesoDatos.RegresaCadena_1_ResultadoSql("Select codigo from CartasClientes where indice = " + IdCliente);
+
+            Image DataImage = DevuelveImagen(CodigoImagen);
+            string path = HttpContext.Current.Server.MapPath("~/Files/Copies/" + CodigoImagen + ".bmp");
+            DataImage.Save(path);
+            InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(path);
+            float scaledWidth = autoScaledInlineShape.Width;
+            float scaledHeight = autoScaledInlineShape.Height;
+            autoScaledInlineShape.Delete();
+
+            // Create a new Shape and fill it with the picture
+            Shape newShape = wordDoc.Shapes.AddShape(1, 85, 0, scaledWidth, scaledHeight);
+            newShape.Fill.UserPicture(path);
+
+            System.Data.DataTable content = InfoCliente(CodigoCliente);
+            string parrafo1 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo1 from CartasClientes where indice = " + IdCliente);
+            string parrafo2 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo2 from CartasClientes where indice = " + IdCliente);
+            string parrafo3 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo3 from CartasClientes where indice = " + IdCliente);
+            string _poliza = AccesoDatos.RegresaCadena_1_ResultadoSql("Select poliza from CartasClientes where indice = " + IdCliente);
+            string _asistente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select asistente from CartasClientes where indice = " + IdCliente);
+            string _fecha = AccesoDatos.RegresaCadena_1_ResultadoSql("Select Fecha from CartasClientes where indice = " + IdCliente);
+
+            foreach (System.Data.DataRow rw in content.Rows)
+            {
+
+                DateTime FechaT = DateTime.Parse(_fecha.Substring(0, 10));
+                string _Fecha = "Guatemala " + FechaT.Day.ToString() + " de " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(FechaT.Month) + " de " + FechaT.Year.ToString();
+                FindAndReplace(wordApp, "{Fecha}", _Fecha);
+                FindAndReplace(wordApp, "{Titulo}", rw["Titulo"]);
+                FindAndReplace(wordApp, "{NombreCompleto}", rw["NombreCompleto"]);
+                FindAndReplace(wordApp, "{Direccion}", rw["direccion"]);
+                FindAndReplace(wordApp, "{Apartado}", rw["Apartado"]);
+                FindAndReplace(wordApp, "{PolizasEjecutivo}", _poliza);
+                FindAndReplace(wordApp, "{Asistente}", _asistente);
+                FindAndReplace(wordApp, "{Parrafo1}", parrafo1);
+                if (parrafo2 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo2}", Environment.NewLine + parrafo2);
+                }
+
+                if (parrafo3 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo3}", Environment.NewLine + parrafo2);
+                }
+
+
+                break;
+            }
+
+            //string[] arc = cuerpo.ToString().Split('.');
+            //int count = 1;
+            //int filas = arc.Length;
+
+            //string replace = "";
+
+            //foreach (string fl in arc)
+            //{
+
+            //    if (count > 5)
+            //    {
+            //        replace += fl;
+            //    }
+            //    else
+            //    {
+            //        FindAndReplace(wordApp, "{Parrafo" + count.ToString() + "}", fl.Trim() + ".");
+            //    }
+
+            //    count += 1;
+            //}
+
+            //FindAndReplace(wordApp, "{Parrafo6}", replace);
+            FindAndReplace(wordApp, "{Parrafo1}", "");
+            FindAndReplace(wordApp, "{Parrafo2}", "");
+            FindAndReplace(wordApp, "{Parrafo3}", "");
+            FindAndReplace(wordApp, "{Parrafo4}", "");
+            FindAndReplace(wordApp, "{Parrafo5}", "");
+            FindAndReplace(wordApp, "{Parrafo6}", "");
+            FindAndReplace(wordApp, "{Doc}", "Doc corr." + IdCliente);
+            Object password = "UnitySecure";// 4ta posicion
+
+            wordDoc.SaveAs(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx", oMissing, true, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, true, oMissing);
+            //, WdSaveFormat.wdFormatPDF, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+            // ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+
+            wordDoc.Close(true); // Close the Word Document.
+            wordApp.Quit(true); // Close Word Application.
+
+            Application objApp = new Application();
+            Document objDoc = objApp.Documents.Open(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx",
+                oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing);
+            objDoc.WritePassword = "UnitySecure"; //use WritePassword attribute to set password for modify file
+            objDoc.Save();
+
+        }
+        catch (Exception ex)
+        {
+
+            Helper.RegistrarEvento(ex.Message);
+
+        }
+    }
+
+    public void CorrePlantilla4(string IdCliente, string archivo)
+    {
+        try
+        {
+            Plantillas Marco = new Plantillas();
+            string CodigoCliente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cliente from CartasClientes where indice = " + IdCliente);
+            Object oMissing = System.Reflection.Missing.Value;
+            Object oTemplatePath = archivo + Marco.listado[0].UbicacionPlantilla;
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
+            wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
+            wordDoc.Activate();
+            Range docRange = wordDoc.Range();
+            string CodigoImagen = AccesoDatos.RegresaCadena_1_ResultadoSql("Select codigo from CartasClientes where indice = " + IdCliente);
+
+            Image DataImage = DevuelveImagen(CodigoImagen);
+            string path = HttpContext.Current.Server.MapPath("~/Files/Copies/" + CodigoImagen + ".bmp");
+            DataImage.Save(path);
+            InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(path);
+            float scaledWidth = autoScaledInlineShape.Width;
+            float scaledHeight = autoScaledInlineShape.Height;
+            autoScaledInlineShape.Delete();
+
+            // Create a new Shape and fill it with the picture
+            Shape newShape = wordDoc.Shapes.AddShape(1, 85, 0, scaledWidth, scaledHeight);
+            newShape.Fill.UserPicture(path);
+
+            System.Data.DataTable content = InfoCliente(CodigoCliente);
+            string parrafo1 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo1 from CartasClientes where indice = " + IdCliente);
+            string parrafo2 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo2 from CartasClientes where indice = " + IdCliente);
+            string parrafo3 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo3 from CartasClientes where indice = " + IdCliente);
+            string _poliza = AccesoDatos.RegresaCadena_1_ResultadoSql("Select poliza from CartasClientes where indice = " + IdCliente);
+            string _asistente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select asistente from CartasClientes where indice = " + IdCliente);
+            string _fecha = AccesoDatos.RegresaCadena_1_ResultadoSql("Select Fecha from CartasClientes where indice = " + IdCliente);
+
+            foreach (System.Data.DataRow rw in content.Rows)
+            {
+
+                DateTime FechaT = DateTime.Parse(_fecha.Substring(0, 10));
+                string _Fecha = "Guatemala " + FechaT.Day.ToString() + " de " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(FechaT.Month) + " de " + FechaT.Year.ToString();
+                FindAndReplace(wordApp, "{Fecha}", _Fecha);
+                FindAndReplace(wordApp, "{Titulo}", rw["Titulo"]);
+                FindAndReplace(wordApp, "{NombreCompleto}", rw["NombreCompleto"]);
+                FindAndReplace(wordApp, "{Direccion}", rw["direccion"]);
+                FindAndReplace(wordApp, "{Apartado}", rw["Apartado"]);
+                FindAndReplace(wordApp, "{PolizasEjecutivo}", _poliza);
+                FindAndReplace(wordApp, "{Asistente}", _asistente);
+                FindAndReplace(wordApp, "{Parrafo1}", parrafo1);
+                if (parrafo2 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo2}", Environment.NewLine + parrafo2);
+                }
+
+                if (parrafo3 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo3}", Environment.NewLine + parrafo2);
+                }
+
+
+                break;
+            }
+
+            //string[] arc = cuerpo.ToString().Split('.');
+            //int count = 1;
+            //int filas = arc.Length;
+
+            //string replace = "";
+
+            //foreach (string fl in arc)
+            //{
+
+            //    if (count > 5)
+            //    {
+            //        replace += fl;
+            //    }
+            //    else
+            //    {
+            //        FindAndReplace(wordApp, "{Parrafo" + count.ToString() + "}", fl.Trim() + ".");
+            //    }
+
+            //    count += 1;
+            //}
+
+            //FindAndReplace(wordApp, "{Parrafo6}", replace);
+            FindAndReplace(wordApp, "{Parrafo1}", "");
+            FindAndReplace(wordApp, "{Parrafo2}", "");
+            FindAndReplace(wordApp, "{Parrafo3}", "");
+            FindAndReplace(wordApp, "{Parrafo4}", "");
+            FindAndReplace(wordApp, "{Parrafo5}", "");
+            FindAndReplace(wordApp, "{Parrafo6}", "");
+            FindAndReplace(wordApp, "{Doc}", "Doc corr." + IdCliente);
+            Object password = "UnitySecure";// 4ta posicion
+
+            wordDoc.SaveAs(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx", oMissing, true, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, true, oMissing);
+            //, WdSaveFormat.wdFormatPDF, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+            // ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+
+            wordDoc.Close(true); // Close the Word Document.
+            wordApp.Quit(true); // Close Word Application.
+
+            Application objApp = new Application();
+            Document objDoc = objApp.Documents.Open(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx",
+                oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing);
+            objDoc.WritePassword = "UnitySecure"; //use WritePassword attribute to set password for modify file
+            objDoc.Save();
+
+        }
+        catch (Exception ex)
+        {
+
+            Helper.RegistrarEvento(ex.Message);
+
+        }
+
+    }
+
+    public void CorrePlantilla5(string IdCliente, string archivo)
+    {
+        try
+        {
+            Plantillas Marco = new Plantillas();
+            string CodigoCliente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cliente from CartasClientes where indice = " + IdCliente);
+            Object oMissing = System.Reflection.Missing.Value;
+            Object oTemplatePath = archivo + Marco.listado[0].UbicacionPlantilla;
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
+            wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
+            wordDoc.Activate();
+            Range docRange = wordDoc.Range();
+            string CodigoImagen = AccesoDatos.RegresaCadena_1_ResultadoSql("Select codigo from CartasClientes where indice = " + IdCliente);
+
+            Image DataImage = DevuelveImagen(CodigoImagen);
+            string path = HttpContext.Current.Server.MapPath("~/Files/Copies/" + CodigoImagen + ".bmp");
+            DataImage.Save(path);
+            InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(path);
+            float scaledWidth = autoScaledInlineShape.Width;
+            float scaledHeight = autoScaledInlineShape.Height;
+            autoScaledInlineShape.Delete();
+
+            // Create a new Shape and fill it with the picture
+            Shape newShape = wordDoc.Shapes.AddShape(1, 85, 0, scaledWidth, scaledHeight);
+            newShape.Fill.UserPicture(path);
+
+            System.Data.DataTable content = InfoCliente(CodigoCliente);
+            string parrafo1 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo1 from CartasClientes where indice = " + IdCliente);
+            string parrafo2 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo2 from CartasClientes where indice = " + IdCliente);
+            string parrafo3 = AccesoDatos.RegresaCadena_1_ResultadoSql("Select parrafo3 from CartasClientes where indice = " + IdCliente);
+            string _poliza = AccesoDatos.RegresaCadena_1_ResultadoSql("Select poliza from CartasClientes where indice = " + IdCliente);
+            string _asistente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select asistente from CartasClientes where indice = " + IdCliente);
+            string _fecha = AccesoDatos.RegresaCadena_1_ResultadoSql("Select Fecha from CartasClientes where indice = " + IdCliente);
+
+            foreach (System.Data.DataRow rw in content.Rows)
+            {
+
+                DateTime FechaT = DateTime.Parse(_fecha.Substring(0, 10));
+                string _Fecha = "Guatemala " + FechaT.Day.ToString() + " de " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(FechaT.Month) + " de " + FechaT.Year.ToString();
+                FindAndReplace(wordApp, "{Fecha}", _Fecha);
+                FindAndReplace(wordApp, "{Titulo}", rw["Titulo"]);
+                FindAndReplace(wordApp, "{NombreCompleto}", rw["NombreCompleto"]);
+                FindAndReplace(wordApp, "{Direccion}", rw["direccion"]);
+                FindAndReplace(wordApp, "{Apartado}", rw["Apartado"]);
+                FindAndReplace(wordApp, "{PolizasEjecutivo}", _poliza);
+                FindAndReplace(wordApp, "{Asistente}", _asistente);
+                FindAndReplace(wordApp, "{Parrafo1}", parrafo1);
+                if (parrafo2 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo2}", Environment.NewLine + parrafo2);
+                }
+
+                if (parrafo3 != "")
+                {
+                    FindAndReplace(wordApp, "{Parrafo3}", Environment.NewLine + parrafo2);
+                }
+
+
+                break;
+            }
+
+            //string[] arc = cuerpo.ToString().Split('.');
+            //int count = 1;
+            //int filas = arc.Length;
+
+            //string replace = "";
+
+            //foreach (string fl in arc)
+            //{
+
+            //    if (count > 5)
+            //    {
+            //        replace += fl;
+            //    }
+            //    else
+            //    {
+            //        FindAndReplace(wordApp, "{Parrafo" + count.ToString() + "}", fl.Trim() + ".");
+            //    }
+
+            //    count += 1;
+            //}
+
+            //FindAndReplace(wordApp, "{Parrafo6}", replace);
+            FindAndReplace(wordApp, "{Parrafo1}", "");
+            FindAndReplace(wordApp, "{Parrafo2}", "");
+            FindAndReplace(wordApp, "{Parrafo3}", "");
+            FindAndReplace(wordApp, "{Parrafo4}", "");
+            FindAndReplace(wordApp, "{Parrafo5}", "");
+            FindAndReplace(wordApp, "{Parrafo6}", "");
+            FindAndReplace(wordApp, "{Doc}", "Doc corr." + IdCliente);
+            Object password = "UnitySecure";// 4ta posicion
+
+            wordDoc.SaveAs(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx", oMissing, true, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, oMissing, true, oMissing);
+            //, WdSaveFormat.wdFormatPDF, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+            // ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+
+            wordDoc.Close(true); // Close the Word Document.
+            wordApp.Quit(true); // Close Word Application.
+
+            Application objApp = new Application();
+            Document objDoc = objApp.Documents.Open(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx",
+                oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing, oMissing,
+                oMissing, oMissing, oMissing, oMissing, oMissing);
+            objDoc.WritePassword = "UnitySecure"; //use WritePassword attribute to set password for modify file
+            objDoc.Save();
+
+        }
+        catch (Exception ex)
+        {
+
+            Helper.RegistrarEvento(ex.Message);
+
+        }
+    }
+
+    public void CorrePlantilla6(string IdCliente, string archivo)
+    {
+        try
+        {
+            Plantillas Marco = new Plantillas();
+            string CodigoCliente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cliente from CartasClientes where indice = " + IdCliente);
+            Object oMissing = System.Reflection.Missing.Value;
+            Object oTemplatePath = archivo + Marco.listado[0].UbicacionPlantilla;
+            Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word.Document wordDoc = new Microsoft.Office.Interop.Word.Document();
+            wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
+            wordDoc.Activate();
+            Range docRange = wordDoc.Range();
+            string CodigoImagen = AccesoDatos.RegresaCadena_1_ResultadoSql("Select codigo from CartasClientes where indice = " + IdCliente);
+
+            Image DataImage = DevuelveImagen(CodigoImagen);
+            string path = HttpContext.Current.Server.MapPath("~/Files/Copies/" + CodigoImagen + ".bmp");
+            DataImage.Save(path);
+            InlineShape autoScaledInlineShape = docRange.InlineShapes.AddPicture(path);
+            float scaledWidth = autoScaledInlineShape.Width;
+            float scaledHeight = autoScaledInlineShape.Height;
+            autoScaledInlineShape.Delete();
+
+            // Create a new Shape and fill it with the picture
+            Shape newShape = wordDoc.Shapes.AddShape(1, 85, 0, scaledWidth, scaledHeight);
+            newShape.Fill.UserPicture(path);
+
+            System.Data.DataTable content = InfoCliente(CodigoCliente);
+            object cuerpo = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cuerpo from CartasClientes where indice = " + IdCliente);
+            string _poliza = AccesoDatos.RegresaCadena_1_ResultadoSql("Select poliza from CartasClientes where indice = " + IdCliente);
+            string _asistente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select asistente from CartasClientes where indice = " + IdCliente);
+            string _fecha = AccesoDatos.RegresaCadena_1_ResultadoSql("Select Fecha from CartasClientes where indice = " + IdCliente);
+
+            foreach (System.Data.DataRow rw in content.Rows)
+            {
+
+                DateTime FechaT = DateTime.Parse(_fecha.Substring(0, 10));
+                string _Fecha = "Guatemala " + FechaT.Day.ToString() + " de " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(FechaT.Month) + " de " + FechaT.Year.ToString();
                 FindAndReplace(wordApp, "{Fecha}", _Fecha);
                 FindAndReplace(wordApp, "{Titulo}", rw["Titulo"]);
                 FindAndReplace(wordApp, "{NombreCompleto}", rw["NombreCompleto"]);
@@ -206,9 +822,11 @@ public class DocMerger
             FindAndReplace(wordApp, "{Parrafo4}", "");
             FindAndReplace(wordApp, "{Parrafo5}", "");
             FindAndReplace(wordApp, "{Parrafo6}", "");
-            FindAndReplace(wordApp, "{Doc}","Doc corr." + IdCliente);
+            FindAndReplace(wordApp, "{Doc}", "Doc corr." + IdCliente);
 
             wordDoc.SaveAs(archivo + Marco.listado[0].UbicacionMerge + CodigoCliente + ".docx");
+            //, WdSaveFormat.wdFormatPDF, ref oMissing, ref oMissing, ref oMissing, ref oMissing,
+            // ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing, ref oMissing);
 
             wordDoc.Close(true); // Close the Word Document.
             wordApp.Quit(true); // Close Word Application.
@@ -224,7 +842,73 @@ public class DocMerger
     }
 
 
+    public System.Drawing.Image DevuelveImagen(string codigoimagen)
+    {
+        //Read in the parameters
+        string strData = codigoimagen;
+        int imageHeight = Convert.ToInt32("25");
+        int imageWidth = Convert.ToInt32("250");
+        string Forecolor = "";
+        string Backcolor = "";
+        bool bIncludeLabel = false;
+        string strImageFormat = "BMP";
+        string strAlignment = "c";
+
+        BarcodeLib.TYPE type = BarcodeLib.TYPE.UNSPECIFIED;
+        type = BarcodeLib.TYPE.CODE128;
+
+        System.Drawing.Image barcodeImage = null;
+        try
+        {
+            BarcodeLib.Barcode b = new BarcodeLib.Barcode();
+            if (type != BarcodeLib.TYPE.UNSPECIFIED)
+            {
+                b.IncludeLabel = bIncludeLabel;
+
+                //alignment
+                switch (strAlignment.ToLower().Trim())
+                {
+                    case "c":
+                        b.Alignment = BarcodeLib.AlignmentPositions.CENTER;
+                        break;
+                    case "r":
+                        b.Alignment = BarcodeLib.AlignmentPositions.RIGHT;
+                        break;
+                    case "l":
+                        b.Alignment = BarcodeLib.AlignmentPositions.LEFT;
+                        break;
+                    default:
+                        b.Alignment = BarcodeLib.AlignmentPositions.CENTER;
+                        break;
+                }//switch
+
+                if (Forecolor.Trim() == "" && Forecolor.Trim().Length != 6)
+                    Forecolor = "000000";
+                if (Backcolor.Trim() == "" && Backcolor.Trim().Length != 6)
+                    Backcolor = "FFFFFF";
+
+                //===== Encoding performed here =====
+                barcodeImage = b.Encode(type, strData.Trim(), System.Drawing.ColorTranslator.FromHtml("#" + Forecolor), System.Drawing.ColorTranslator.FromHtml("#" + Backcolor), imageWidth, imageHeight);
+                //===================================
+               
+                
+            }//if
+        }//try
+        catch (Exception ex)
+        {
+            //TODO: find a way to return this to display the encoding error message
+        }//catch
+        finally
+        {
+
+        }//finally
+        return barcodeImage;
+    }
+
+
+
 }
+
 
 public class Plantilla
 {

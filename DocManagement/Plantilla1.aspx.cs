@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using Microsoft.Office.Interop.Word;
+using System.IO;
 
 
 
@@ -22,7 +18,7 @@ namespace DocManagement
                 string archivo = Server.MapPath(".");
                 Doc.CorrePlantilla1(_id, archivo);
                 Plantillas Marco = new Plantillas();
-                
+
                 Response.Redirect(archivo + Marco.listado[0].UbicacionMerge + cliente + ".docx");
 
             }
@@ -31,12 +27,11 @@ namespace DocManagement
 
                 Helper.RegistrarEvento("Plantilla 1 " + es.Message);
             }
-  
+
 
 
         }
 
- 
 
     }
 }

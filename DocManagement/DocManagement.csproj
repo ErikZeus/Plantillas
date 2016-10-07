@@ -43,6 +43,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30512.17815, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="BarcodeLib, Version=1.0.0.21, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\BarcodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -107,6 +115,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\AjaxControlToolkit.dll" />
+    <Content Include="bin\BarcodeLib.dll" />
+    <Content Include="bin\DocManagement.dll" />
+    <Content Include="Llamada.aspx" />
+    <Content Include="Logs\2016\20160928.txt" />
+    <Content Include="Logs\2016\20160929.txt" />
+    <Content Include="Logs\2016\20161004.txt" />
+    <Content Include="Logs\2016\20161005.txt" />
+    <Content Include="Logs\2016\20161006.txt" />
+    <Content Include="Logs\2016\20161007.txt" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -139,6 +157,13 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="DocMerger.cs" />
+    <Compile Include="Llamada.aspx.cs">
+      <DependentUpon>Llamada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Llamada.aspx.designer.cs">
+      <DependentUpon>Llamada.aspx</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -201,7 +226,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\" />
     <Folder Include="Files\Copies\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
