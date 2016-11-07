@@ -326,19 +326,23 @@ public class DocMerger
         foreach (System.Data.DataRow rw in content.Rows)
         {
 
-            table[tupla, 0].BackgroundColor = Color.Yellow;
+            table.Rows[tupla].Cells[0].BackgroundColor = Color.Yellow;
+            table.Rows[tupla].Cells[2].BackgroundColor = Color.Yellow;
+            table.Rows[tupla].Cells[4].BackgroundColor = Color.Yellow;
             table[tupla, 0].PreferredWidthType = WidthType.Fixed;
             table[tupla, 0].PreferredWidth = Units.InchesToDocumentsF(5f);
             table[tupla, 1].PreferredWidthType = WidthType.Fixed;
             table[tupla, 1].PreferredWidth = Units.InchesToDocumentsF(1f);
-            table[tupla, 2].BackgroundColor = Color.Yellow;
+            table[tupla, 1].BackgroundColor = Color.White;
             table[tupla, 2].PreferredWidthType = WidthType.Fixed;
             table[tupla, 2].PreferredWidth = Units.InchesToDocumentsF(1f);
             table[tupla, 3].PreferredWidthType = WidthType.Fixed;
             table[tupla, 3].PreferredWidth = Units.InchesToDocumentsF(1f);
-            table[tupla, 4].BackgroundColor = Color.Yellow;
+            table[tupla, 3].BackgroundColor = Color.White;
             table[tupla, 4].PreferredWidthType = WidthType.Fixed;
             table[tupla, 4].PreferredWidth = Units.InchesToDocumentsF(2f);
+          
+
             wordDoc.Document.InsertText(table[tupla, 0].Range.Start, rw["nombre"].ToString());
             wordDoc.Document.InsertText(table[tupla, 1].Range.Start, "");
             wordDoc.Document.InsertText(table[tupla, 2].Range.Start, rw["certificado"].ToString());
