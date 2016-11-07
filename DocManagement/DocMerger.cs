@@ -249,8 +249,11 @@ public class DocMerger
                 wordDoc.Document.ReplaceAll("{Requerimiento}", rw["requerimiento"].ToString(), SearchOptions.WholeWord);
                 wordDoc.Document.ReplaceAll("{firma}", rw["firma"].ToString(), SearchOptions.WholeWord);
                 wordDoc.Document.ReplaceAll("{correo}", rw["correo"].ToString(), SearchOptions.WholeWord);
-                 
-                break;
+                    wordDoc.Document.ReplaceAll("{firma_administrativa}", rw["firma_administrativa"].ToString(), SearchOptions.WholeWord);
+                    wordDoc.Document.ReplaceAll("{correo_administrativa}", rw["correo_administrativa"].ToString(), SearchOptions.WholeWord);
+            
+
+                    break;
             }
             wordDoc.Document.ReplaceAll("{Fecha}", "", SearchOptions.WholeWord);
             wordDoc.Document.ReplaceAll("{Titulo}", "", SearchOptions.WholeWord);
@@ -270,7 +273,10 @@ public class DocMerger
             wordDoc.Document.ReplaceAll("{Requerimiento}", "", SearchOptions.WholeWord);
             wordDoc.Document.ReplaceAll("{firma}", "", SearchOptions.WholeWord);
             wordDoc.Document.ReplaceAll("{correo}", "", SearchOptions.WholeWord);
-            wordDoc.Document.ReplaceAll("{Doc}", "Doc corr." + IdCliente, SearchOptions.WholeWord);
+            wordDoc.Document.ReplaceAll("{firma_administrativa}", "", SearchOptions.WholeWord);
+            wordDoc.Document.ReplaceAll("{correo_administrativa}", "", SearchOptions.WholeWord);
+
+                wordDoc.Document.ReplaceAll("{Doc}", "Doc corr." + IdCliente, SearchOptions.WholeWord);
                 if (carta == "Envío de Documentos")
                 {
                     int filas = Int32.Parse(AccesoDatos.RegresaCadena_1_ResultadoSql("select count(*) from asegurado where poliza = '"+ _poliza + "'"));
@@ -320,7 +326,15 @@ public class DocMerger
 
         table.Rows[1].HeightType = HeightType.Exact;
         table.Rows[1].Height = Units.InchesToDocumentsF(0.25f);
-        int tupla = 0;
+        wordDoc.Document.InsertText(table[0, 0].Range.Start,"Nombre");
+        wordDoc.Document.InsertText(table[0, 2].Range.Start, "Cert.");
+        wordDoc.Document.InsertText(table[0, 4].Range.Start, "Descripción");
+        table[0, 0].Borders.Bottom.LineColor = Color.White;
+        table[0, 0].Borders.Top.LineColor = Color.White;
+        table[0, 0].Borders.Left.LineColor = Color.White;
+        table[0, 0].Borders.Right.LineColor = Color.White;
+       // table[0, 0]..Right.LineColor = Color.White;
+        int tupla = 1;
         // Additional adjustments
         //DocumentPosition pos = wordDoc.Document.CreatePosition(60);
         foreach (System.Data.DataRow rw in content.Rows)
