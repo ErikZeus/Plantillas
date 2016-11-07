@@ -11,21 +11,45 @@ namespace DocManagement
         {
             try
             {
-                string _id = Request.QueryString["Id"].ToString();
-                string cliente = AccesoDatos.RegresaCadena_1_ResultadoSql("Select cliente from CartasClientes where indice = " + _id);
-
+                string _id = Request.QueryString["id"].ToString();
+  
                 DocMerger Doc = new DocMerger();
                 string archivo = Server.MapPath(".");
                 Doc.CorrePlantilla1(_id, archivo);
                 Plantillas Marco = new Plantillas();
+                string address = archivo + Marco.listado[0].UbicacionMerge + _id + ".docx";
 
-                Response.Redirect(archivo + Marco.listado[0].UbicacionMerge + cliente + ".docx");
+
+                MemoryStream memoryStream = new MemoryStream();
+                using (Stream input = File.OpenRead(address))
+                {
+                    byte[] buffer = new byte[32 * 1024]; // 32K buffer for example
+                    int bytesRead;
+                    while ((bytesRead = input.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        memoryStream.Write(buffer, 0, bytesRead);
+                    }
+                }
+                memoryStream.Position = 0;
+
+
+                Response.Clear();
+                Response.ContentType = "Application/msword";
+                Response.AddHeader("Content-Disposition", "attachment; filename=myfile.docx");
+                Response.BinaryWrite(memoryStream.ToArray());
+                // myMemoryStream.WriteTo(Response.OutputStream); //works too
+                Response.Flush();
+                Response.Close();
+                Response.End();
+
+
+                
 
             }
             catch (Exception es)
             {
 
-                Helper.RegistrarEvento("Plantilla 1 " + es.Message);
+              //  Helper.RegistrarEvento("Plantilla 1 " + es.Message);
             }
 
 

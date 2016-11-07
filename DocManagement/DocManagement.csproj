@@ -15,15 +15,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DocManagement</RootNamespace>
     <AssemblyName>DocManagement</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
-    <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=3.0.30512.17815, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
@@ -50,6 +45,57 @@
     <Reference Include="BarcodeLib, Version=1.0.0.21, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Docs.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Office.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.RichEdit.v16.1.Core.resources, Version=16.1.7.0, Culture=de, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.v16.1.Design, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Web.Resources.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v16.1.Web, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Pdf.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.PivotGrid.v16.1.Core, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v16.1, Version=16.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
@@ -97,27 +143,774 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MySql.Data.Entity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\AjaxControlToolkit.dll" />
     <Content Include="bin\BarcodeLib.dll" />
     <Content Include="bin\DocManagement.dll" />
+    <Content Include="Framework\Design\DevExpress.Dashboard.v15.2.Web.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Dashboard.v15.2.Win.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.DataAccess.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.AuditTrail.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Design.BOEditorUI.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Design.DynamicTypesManager.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Design.ModelEditor.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.DesignCore.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.HtmlPropertyEditor.Web.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.PivotChart.Web.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Reports.Web.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Scheduler.Web.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Security.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Web.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.ExpressApp.Win.Design.v15.2.dll" />
+    <Content Include="Framework\Design\DevExpress.Snap.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Web.ASPxScheduler.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Web.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Carousel.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Charts.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Charts.v15.2.VisualStudio.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Controls.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Core.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Core.v15.2.Design.Wizards.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Core.v15.2.Extensions.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Diagram.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Docking.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Gauges.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Grid.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.LayoutControl.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Map.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.NavBar.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.PdfViewer.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.PivotGrid.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Printing.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.PropertyGrid.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.ReportDesigner.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Ribbon.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.RichEdit.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Scheduler.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.Spreadsheet.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpf.TreeMap.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.Xpo.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraBars.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraCharts.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraCharts.v15.2.Web.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraDiagram.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraEditors.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraGauges.v15.2.Design.Win.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraGrid.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraLayout.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraMap.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraNavBar.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraPdfViewer.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraPivotGrid.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraPrinting.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraReports.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraReports.v15.2.Service.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraRichEdit.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraScheduler.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraSpellChecker.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraSpreadsheet.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraTreeList.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraVerticalGrid.v15.2.Design.dll" />
+    <Content Include="Framework\Design\DevExpress.XtraWizard.v15.2.Design.dll" />
+    <Content Include="Framework\DevExpress.BonusSkins.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Charts.Designer.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Charts.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.CodeConverter.v15.2.dll" />
+    <Content Include="Framework\DevExpress.CodeParser.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Dashboard.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Dashboard.v15.2.Web.dll" />
+    <Content Include="Framework\DevExpress.Dashboard.v15.2.Web.Mvc.dll" />
+    <Content Include="Framework\DevExpress.Dashboard.v15.2.Web.Mvc5.dll" />
+    <Content Include="Framework\DevExpress.Dashboard.v15.2.Win.dll" />
+    <Content Include="Framework\DevExpress.Data.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Data.v15.2.xml" />
+    <Content Include="Framework\DevExpress.DataAccess.v15.2.dll" />
+    <Content Include="Framework\DevExpress.DataAccess.v15.2.UI.dll" />
+    <Content Include="Framework\DevExpress.DataAccess.v15.2.UI.xml" />
+    <Content Include="Framework\DevExpress.DataAccess.v15.2.xml" />
+    <Content Include="Framework\DevExpress.DemoData.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.DemoData.v15.2.dll" />
+    <Content Include="Framework\DevExpress.DemoReports.v15.2.dll" />
+    <Content Include="Framework\DevExpress.DevAV.v15.2.Data.dll" />
+    <Content Include="Framework\DevExpress.DevAV.v15.2.Reports.dll" />
+    <Content Include="Framework\DevExpress.Diagram.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Diagram.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Docs.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Docs.v15.2.xml" />
+    <Content Include="Framework\DevExpress.EasyTest.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.AuditTrail.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Chart.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Chart.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Chart.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.CloneObject.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ConditionalAppearance.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Demos.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Demos.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.EasyTest.WebAdapter.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.EasyTest.WinAdapter.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.EF.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.FileAttachment.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.FileAttachment.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.HtmlPropertyEditor.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Images.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Kpi.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Maps.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Notifications.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Notifications.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Notifications.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Objects.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.PivotChart.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.PivotChart.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.PivotChart.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.PivotGrid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.PivotGrid.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.PivotGrid.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Reports.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Reports.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Reports.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ReportsV2.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ReportsV2.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ReportsV2.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Scheduler.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Scheduler.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Scheduler.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ScriptRecorder.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ScriptRecorder.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ScriptRecorder.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Security.EF.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Security.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Security.Xpo.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.StateMachine.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.TreeListEditors.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.TreeListEditors.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.TreeListEditors.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Validation.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Validation.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Validation.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.ViewVariantsModule.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Workflow.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Workflow.Win.v15.2.dll" />
+    <Content Include="Framework\DevExpress.ExpressApp.Xpo.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Images.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Map.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Map.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Mvvm.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Mvvm.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Office.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Office.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Pdf.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Pdf.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Pdf.v15.2.Drawing.dll" />
+    <Content Include="Framework\DevExpress.Pdf.v15.2.Drawing.xml" />
+    <Content Include="Framework\DevExpress.Persistent.Base.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Persistent.BaseImpl.EF.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Persistent.BaseImpl.v15.2.dll" />
+    <Content Include="Framework\DevExpress.PivotGrid.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.PivotGrid.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Printing.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Printing.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.RichEdit.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.RichEdit.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.SharePoint.2013.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Snap.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Snap.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Snap.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Snap.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.Snap.v15.2.Extensions.xml" />
+    <Content Include="Framework\DevExpress.Snap.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Sparkline.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Sparkline.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.SpellChecker.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.SpellChecker.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Spreadsheet.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Spreadsheet.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Tutorials.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Utils.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Utils.v15.2.UI.dll" />
+    <Content Include="Framework\DevExpress.Utils.v15.2.UI.xml" />
+    <Content Include="Framework\DevExpress.Utils.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxGauges.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxGauges.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxHtmlEditor.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxHtmlEditor.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxPivotGrid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxPivotGrid.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxRichEdit.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxRichEdit.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxScheduler.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxScheduler.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxSpellChecker.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxSpellChecker.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxSpreadsheet.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxSpreadsheet.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.ASPxThemes.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxTreeList.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.ASPxTreeList.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.Mvc.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.Mvc.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Web.Mvc5.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Web.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Workflow.Activities.v15.2.Design.dll" />
+    <Content Include="Framework\DevExpress.Workflow.Activities.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Carousel.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Charts.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Controls.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Core.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Core.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.Xpf.DataAccess.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.DemoBase.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Diagram.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Diagram.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Xpf.Docking.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.DocumentViewer.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Xpf.DocumentViewer.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.Xpf.Gauges.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Grid.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Grid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Grid.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Layout.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.Xpf.LayoutControl.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Map.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.NavBar.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.PdfViewer.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.PivotGrid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Printing.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.PropertyGrid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.ReportDesigner.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Ribbon.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.RichEdit.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Scheduler.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.SpellChecker.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.SpellChecker.v15.2.xml" />
+    <Content Include="Framework\DevExpress.Xpf.Spreadsheet.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.DXStyle.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.HybridApp.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.LightGray.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.MetropolisDark.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.MetropolisLight.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2007Black.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2007Blue.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2007Silver.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2010Black.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2010Blue.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2010Silver.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2013.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2013DarkGray.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2013LightGray.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2016Black.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2016Colorful.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Office2016White.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.Seven.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.TouchlineDark.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.Themes.VS2010.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpf.TreeMap.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpo.v15.2.dll" />
+    <Content Include="Framework\DevExpress.Xpo.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.Xpo.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraBars.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraBars.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.UI.dll" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.UI.xml" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.Web.dll" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.Web.xml" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.Wizard.dll" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.Wizard.xml" />
+    <Content Include="Framework\DevExpress.XtraCharts.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraDiagram.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraDiagram.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraEditors.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraEditors.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraGauges.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.XtraGauges.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.XtraGauges.v15.2.Presets.dll" />
+    <Content Include="Framework\DevExpress.XtraGauges.v15.2.Presets.xml" />
+    <Content Include="Framework\DevExpress.XtraGauges.v15.2.Win.dll" />
+    <Content Include="Framework\DevExpress.XtraGauges.v15.2.Win.xml" />
+    <Content Include="Framework\DevExpress.XtraGrid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraGrid.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraLayout.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraLayout.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraMap.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraMap.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraNavBar.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraNavBar.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraPdfViewer.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraPdfViewer.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraPivotGrid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraPivotGrid.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraPrinting.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraPrinting.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.Extensions.xml" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.Service.dll" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.Service.xml" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.Web.Azure.dll" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.Web.dll" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.Web.xml" />
+    <Content Include="Framework\DevExpress.XtraReports.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraRichEdit.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraRichEdit.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.XtraRichEdit.v15.2.Extensions.xml" />
+    <Content Include="Framework\DevExpress.XtraRichEdit.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Core.dll" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Core.xml" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Extensions.dll" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Extensions.xml" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Reporting.dll" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Reporting.Extensions.dll" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Reporting.Extensions.xml" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.Reporting.xml" />
+    <Content Include="Framework\DevExpress.XtraScheduler.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraSpellChecker.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraSpellChecker.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraSpreadsheet.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraSpreadsheet.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraTreeList.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraTreeList.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraVerticalGrid.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraVerticalGrid.v15.2.xml" />
+    <Content Include="Framework\DevExpress.XtraWizard.v15.2.dll" />
+    <Content Include="Framework\DevExpress.XtraWizard.v15.2.xml" />
+    <Content Include="Framework\de\DevExpress.Charts.Designer.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Dashboard.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Dashboard.v15.2.Web.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Dashboard.v15.2.Win.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Data.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.DataAccess.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.DataAccess.v15.2.UI.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.AuditTrail.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Chart.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.CloneObject.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Demos.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.FileAttachment.Web.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.FileAttachment.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Kpi.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Objects.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.PivotChart.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.PivotChart.Web.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.PivotChart.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.PivotGrid.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Reports.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Reports.Web.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Reports.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.ReportsV2.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.ReportsV2.Web.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.ReportsV2.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Scheduler.Web.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Scheduler.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.ScriptRecorder.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.ScriptRecorder.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Security.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.StateMachine.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Validation.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Validation.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.ViewVariantsModule.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Web.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Workflow.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.ExpressApp.Workflow.Win.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Map.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Office.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Pdf.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.PivotGrid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Printing.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.RichEdit.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Snap.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Snap.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Snap.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Sparkline.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Spreadsheet.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Utils.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Utils.v15.2.UI.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Web.ASPxHtmlEditor.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Web.ASPxRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Web.ASPxScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Web.ASPxSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Web.ASPxSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Web.ASPxTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Web.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Charts.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Controls.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Core.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Docking.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.DocumentViewer.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Gauges.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Grid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.LayoutControl.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.NavBar.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.PdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Printing.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.PropertyGrid.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Ribbon.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.RichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.SpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpf.Spreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.Xpo.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraBars.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraCharts.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraCharts.v15.2.Wizard.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraEditors.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraGauges.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraGauges.v15.2.Presets.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraGrid.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraLayout.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraNavBar.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraPdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraPivotGrid.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraPrinting.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraReports.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraReports.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraReports.v15.2.Web.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraRichEdit.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraScheduler.v15.2.Core.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraScheduler.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraScheduler.v15.2.Reporting.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraVerticalGrid.v15.2.resources.dll" />
+    <Content Include="Framework\de\DevExpress.XtraWizard.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Charts.Designer.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Dashboard.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Dashboard.v15.2.Web.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Dashboard.v15.2.Win.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Data.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.DataAccess.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.DataAccess.v15.2.UI.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.CloneObject.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.FileAttachment.Web.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.FileAttachment.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Objects.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.PivotChart.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.PivotChart.Web.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.PivotChart.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Reports.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Reports.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.ReportsV2.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.ReportsV2.Web.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.ReportsV2.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Scheduler.Web.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Scheduler.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.ScriptRecorder.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.ScriptRecorder.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Security.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Validation.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Validation.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.ViewVariantsModule.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Web.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.ExpressApp.Win.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Map.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Office.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Pdf.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.PivotGrid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Printing.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.RichEdit.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Snap.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Snap.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Snap.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Sparkline.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Spreadsheet.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Utils.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Utils.v15.2.UI.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Web.ASPxHtmlEditor.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Web.ASPxRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Web.ASPxScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Web.ASPxSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Web.ASPxSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Web.ASPxTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Web.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Charts.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Controls.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Core.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Docking.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.DocumentViewer.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Gauges.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Grid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.LayoutControl.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.NavBar.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.PdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Printing.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.PropertyGrid.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Ribbon.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.RichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.SpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpf.Spreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.Xpo.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraBars.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraCharts.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraCharts.v15.2.Wizard.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraEditors.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraGauges.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraGauges.v15.2.Presets.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraGrid.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraLayout.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraNavBar.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraPdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraPivotGrid.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraPrinting.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraReports.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraReports.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraReports.v15.2.Web.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraRichEdit.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraScheduler.v15.2.Core.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraScheduler.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraScheduler.v15.2.Reporting.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraVerticalGrid.v15.2.resources.dll" />
+    <Content Include="Framework\es\DevExpress.XtraWizard.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Charts.Designer.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Dashboard.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Dashboard.v15.2.Web.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Dashboard.v15.2.Win.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Data.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.DataAccess.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.DataAccess.v15.2.UI.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.AuditTrail.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Chart.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.CloneObject.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Demos.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.FileAttachment.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.FileAttachment.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Kpi.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Objects.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.PivotChart.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.PivotChart.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.PivotChart.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.PivotGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Reports.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Reports.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Reports.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.ReportsV2.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.ReportsV2.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.ReportsV2.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Scheduler.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Scheduler.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.ScriptRecorder.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.ScriptRecorder.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Security.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.StateMachine.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Validation.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Validation.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.ViewVariantsModule.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Workflow.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.ExpressApp.Workflow.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Map.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Office.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Pdf.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.PivotGrid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Printing.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.RichEdit.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Snap.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Snap.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Snap.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Sparkline.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Spreadsheet.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Utils.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Utils.v15.2.UI.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Web.ASPxHtmlEditor.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Web.ASPxRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Web.ASPxScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Web.ASPxSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Web.ASPxSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Web.ASPxTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Charts.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Controls.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Core.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Docking.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.DocumentViewer.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Gauges.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Grid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.LayoutControl.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.NavBar.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.PdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Printing.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.PropertyGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Ribbon.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.RichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.SpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpf.Spreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.Xpo.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraBars.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraCharts.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraCharts.v15.2.Wizard.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraEditors.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraGauges.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraGauges.v15.2.Presets.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraLayout.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraNavBar.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraPdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraPivotGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraPrinting.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraReports.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraReports.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraReports.v15.2.Web.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraRichEdit.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraScheduler.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraScheduler.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraScheduler.v15.2.Reporting.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraVerticalGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ja\DevExpress.XtraWizard.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Charts.Designer.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Dashboard.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Dashboard.v15.2.Web.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Dashboard.v15.2.Win.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Data.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.DataAccess.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.DataAccess.v15.2.UI.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.AuditTrail.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Chart.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.CloneObject.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Demos.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.FileAttachment.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.FileAttachment.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.HtmlPropertyEditor.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Kpi.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Objects.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.PivotChart.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.PivotChart.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.PivotChart.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.PivotGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Reports.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Reports.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Reports.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.ReportsV2.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.ReportsV2.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.ReportsV2.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Scheduler.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Scheduler.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.ScriptRecorder.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.ScriptRecorder.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Security.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.StateMachine.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Validation.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Validation.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.ViewVariantsModule.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Workflow.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.ExpressApp.Workflow.Win.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Map.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Office.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Pdf.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.PivotGrid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Printing.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.RichEdit.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Snap.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Snap.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Snap.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Sparkline.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Spreadsheet.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Utils.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Utils.v15.2.UI.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Web.ASPxHtmlEditor.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Web.ASPxRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Web.ASPxScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Web.ASPxSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Web.ASPxSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Web.ASPxTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Web.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Charts.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Controls.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Core.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Docking.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.DocumentViewer.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Gauges.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Grid.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.LayoutControl.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.NavBar.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.PdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Printing.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.PropertyGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Ribbon.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.RichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Scheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.SpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpf.Spreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.Xpo.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraBars.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraCharts.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraCharts.v15.2.Wizard.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraEditors.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraGauges.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraGauges.v15.2.Presets.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraLayout.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraNavBar.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraPdfViewer.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraPivotGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraPrinting.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraReports.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraReports.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraReports.v15.2.Web.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraRichEdit.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraRichEdit.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraScheduler.v15.2.Core.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraScheduler.v15.2.Extensions.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraScheduler.v15.2.Reporting.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraScheduler.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraSpellChecker.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraSpreadsheet.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraTreeList.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraVerticalGrid.v15.2.resources.dll" />
+    <Content Include="Framework\ru\DevExpress.XtraWizard.v15.2.resources.dll" />
+    <Content Include="Framework\System.Windows.Interactivity.dll" />
+    <Content Include="images\LogoUnity.png" />
     <Content Include="Llamada.aspx" />
     <Content Include="Logs\2016\20160928.txt" />
     <Content Include="Logs\2016\20160929.txt" />
@@ -142,17 +935,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Plantilla4.aspx" />
-    <Content Include="Plantilla5.aspx" />
-    <Content Include="Plantilla6.aspx" />
     <Content Include="PlantillaHistorico.aspx" />
     <Content Include="Plantilla.aspx" />
-    <Content Include="Plantilla3.aspx" />
-    <Content Include="Plantilla2.aspx" />
     <Content Include="Plantilla1.aspx" />
     <Content Include="scripts\ai.0.22.19-build00125.js" />
     <Content Include="scripts\ai.0.22.19-build00125.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
@@ -167,27 +957,6 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="Plantilla4.aspx.cs">
-      <DependentUpon>Plantilla4.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plantilla4.aspx.designer.cs">
-      <DependentUpon>Plantilla4.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Plantilla5.aspx.cs">
-      <DependentUpon>Plantilla5.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plantilla5.aspx.designer.cs">
-      <DependentUpon>Plantilla5.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Plantilla6.aspx.cs">
-      <DependentUpon>Plantilla6.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plantilla6.aspx.designer.cs">
-      <DependentUpon>Plantilla6.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PlantillaHistorico.aspx.cs">
       <DependentUpon>PlantillaHistorico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,20 +971,6 @@
     <Compile Include="Plantilla.aspx.designer.cs">
       <DependentUpon>Plantilla.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Plantilla3.aspx.cs">
-      <DependentUpon>Plantilla3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plantilla3.aspx.designer.cs">
-      <DependentUpon>Plantilla3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Plantilla2.aspx.cs">
-      <DependentUpon>Plantilla2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Plantilla2.aspx.designer.cs">
-      <DependentUpon>Plantilla2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Plantilla1.aspx.cs">
       <DependentUpon>Plantilla1.aspx</DependentUpon>
@@ -229,10 +984,6 @@
     <Folder Include="Files\Copies\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
-  <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -240,24 +991,12 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53816</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53816/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>

@@ -1,0 +1,10 @@
+[2016-11-04 10:46:11] - Plantilla 1 Thread was being aborted.
+[2016-11-04 10:48:19] - Plantilla 1 Thread was being aborted.
+[2016-11-04 11:36:17] - Plantilla 1 Thread was being aborted.
+[2016-11-04 14:42:51] - Cargando el documento : Could not find file 'C:\Proyecto Administrador Doc Word\Proyecto Administrador Doc Word\DocManagement\Files\OriginalDoc\Envío de Documentos.docx'.
+[2016-11-04 14:43:08] - Plantilla 1 Thread was being aborted.
+[2016-11-04 14:46:16] - Cargando el documento : Could not find file 'C:\Proyecto Administrador Doc Word\Proyecto Administrador Doc Word\DocManagement\Files\OriginalDoc\Envío de Documentos.docx'.
+[2016-11-04 14:46:16] - Plantilla 1 Could not find file 'C:\Proyecto Administrador Doc Word\Proyecto Administrador Doc Word\DocManagement\Files\Copies\100000094.docx'.
+[2016-11-04 14:49:44] - Plantilla 1 Thread was being aborted.
+[2016-11-04 14:50:50] - Plantilla 1 Thread was being aborted.
+[2016-11-04 14:53:13] - Cargando el documento : The handle is invalid. (Exception from HRESULT: 0x80070006 (E_HANDLE))

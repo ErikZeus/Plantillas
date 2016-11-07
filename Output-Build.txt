@@ -1,0 +1,11 @@
+﻿------ Build started: Project: PlantillasUnity, Configuration: Debug Any CPU ------
+CSC : warning CS2002: Source file 'obj\Debug\\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs' specified multiple times
+CSC : warning CS2002: Source file 'obj\Debug\\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs' specified multiple times
+CSC : warning CS2002: Source file 'obj\Debug\\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs' specified multiple times
+C:\Proyecto Plantillas\Plantillas\AccesoDatos.cs(210,14,210,24): warning CS0219: The variable 'useHashing' is assigned but its value is never used
+C:\Proyecto Plantillas\Plantillas\AccesoDatos.cs(290,30,290,32): warning CS0168: The variable 'ex' is declared but never used
+C:\Proyecto Plantillas\Plantillas\DocMerger.cs(200,13,200,56): warning CS0618: 'DevExpress.XtraRichEdit.API.Native.SubDocument.InsertImage(DevExpress.XtraRichEdit.API.Native.DocumentPosition, System.Drawing.Image)' is obsolete: 'This method has become obsolete. Use the 'DevExpress.XtraRichEdit.API.Native.DocumentImageCollection.Insert(DocumentPosition pos, System.Drawing.Image image)' method instead.'
+C:\Proyecto Plantillas\Plantillas\DocMerger.cs(403,16,403,30): warning CS0219: The variable 'strImageFormat' is assigned but its value is never used
+C:\Proyecto Plantillas\Plantillas\DocMerger.cs(446,26,446,28): warning CS0168: The variable 'ex' is declared but never used
+  PlantillasUnity -> C:\Proyecto Plantillas\Plantillas\bin\Plantillas.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
