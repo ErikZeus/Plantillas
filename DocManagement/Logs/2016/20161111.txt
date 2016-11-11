@@ -1,0 +1,2 @@
+[2016-11-11 09:48:58] - Cargando el documento : Empty path name is not legal.
+[2016-11-11 09:50:11] - Cargando el documento : Empty path name is not legal.
