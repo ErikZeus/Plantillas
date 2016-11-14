@@ -199,6 +199,8 @@ public class DocMerger
 
                 wordDoc.Document.InsertImage(pos, DataImage);
 
+                var input = "";
+                var format = "dddd, MMMM dd, yyyy";
 
                 string _poliza = "";
                 string parrafo1, parrafo2, parrafo3 = "";
@@ -206,9 +208,13 @@ public class DocMerger
                 System.Data.DataTable poliza = AccesoDatos.RegresaTablaSql("Select * from CartasClientes where indice = " + IdCliente);
                 foreach (System.Data.DataRow rw in poliza.Rows)
                 {
-                    DateTime FechaT = DateTime.Parse(DateTime.Now.ToShortDateString());
-                    string _Fecha = "Guatemala, " + FechaT.Day.ToString() + " de " + CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(FechaT.Month) + " de " + FechaT.Year.ToString();
-                    wordDoc.Document.ReplaceAll("{Fecha}", rw["Fecha"].ToString(), SearchOptions.WholeWord);
+                    DateTime FechaT = DateTime.Parse(rw["Fecha"].ToString());
+                    string _Fecha = FechaT.ToString(format, new CultureInfo("es-ES"));
+                    //_Fecha = _Fecha.Substring(0, 1).ToUpper() + _Fecha.Substring(1, _Fecha.Length - 1);
+                    _Fecha = _Fecha.Replace("enero", "Enero").Replace("febrero", "Febrero").Replace("marzo", "Marzo").Replace("abril", "Abril").Replace("mayo", "Mayo").Replace("junio", "Junio").Replace("julio", "Julio").Replace("agosto", "Agosto").Replace("septiembre", "Septiembre").Replace("octubre", "Octubre").Replace("noviembre", "Noviembre").Replace("diciembre","Diciembre");
+                    _Fecha = _Fecha.Replace("lunes,","").Replace("martes,","").Replace("miercoles,","").Replace("jueves,","").Replace("viernes,","").Replace("sabado,","").Replace("domingo,","");
+                    _Fecha = "Guatemala, " + _Fecha + ".";
+                    wordDoc.Document.ReplaceAll("{Fecha}", _Fecha, SearchOptions.WholeWord);
                     wordDoc.Document.ReplaceAll("{Titulo}", rw["Titulo"].ToString(), SearchOptions.WholeWord);
                     wordDoc.Document.ReplaceAll("{NombreCompleto}", rw["NombreCompleto"].ToString(), SearchOptions.WholeWord);
                     wordDoc.Document.ReplaceAll("{Nombre}", rw["NombreCompleto"].ToString(), SearchOptions.WholeWord);
@@ -216,7 +222,6 @@ public class DocMerger
                     wordDoc.Document.ReplaceAll("{Apartado}", rw["Apartado"].ToString(), SearchOptions.WholeWord);
                     wordDoc.Document.ReplaceAll("{PolizasEjecutivo}", rw["poliza"].ToString(), SearchOptions.WholeWord);
                     wordDoc.Document.ReplaceAll("{Asistente}", rw["asistente"].ToString(), SearchOptions.WholeWord);
-
 
                     parrafo1 = rw["parrafo1"].ToString().Trim();
                     parrafo2 = rw["parrafo2"].ToString().Trim();
@@ -260,7 +265,6 @@ public class DocMerger
                     wordDoc.Document.ReplaceAll("{correo}", rw["correo"].ToString(), SearchOptions.WholeWord);
                     wordDoc.Document.ReplaceAll("{firma_administrativa}", rw["firma_administrativa"].ToString(), SearchOptions.WholeWord);
                     wordDoc.Document.ReplaceAll("{correo_administrativa}", rw["correo_administrativa"].ToString(), SearchOptions.WholeWord);
-
 
                     break;
                 }
@@ -326,7 +330,7 @@ public class DocMerger
 
     public void TablaDoc(ref RichEditDocumentServer wordDoc, int filas, string _poliza)
     {
-        DocumentPosition pos = wordDoc.Document.CreatePosition(1175);
+        DocumentPosition pos = wordDoc.Document.CreatePosition(1075);
         System.Data.DataTable content = AccesoDatos.RegresaTablaSql("select asegurado as nombre, certificado, clase as descripcion from asegurado where poliza = '" + _poliza + "' order by asegurado, certificado");
         DevExpress.XtraRichEdit.API.Native.Table table = wordDoc.Document.Tables.Add(pos, filas, 5);
 
@@ -334,19 +338,19 @@ public class DocMerger
         table.TableLayout = TableLayoutType.Fixed;
 
         table.PreferredWidthType = WidthType.Fixed;
-        table.PreferredWidth = Units.InchesToDocumentsF(11f);
+        table.PreferredWidth = Units.InchesToDocumentsF(8f);
 
         table.Rows[1].HeightType = HeightType.Exact;
         table.Rows[1].Height = Units.InchesToDocumentsF(0.25f);
         wordDoc.Document.InsertText(table[0, 0].Range.Start, "Nombre");
         wordDoc.Document.InsertText(table[0, 2].Range.Start, "Cert.");
         wordDoc.Document.InsertText(table[0, 4].Range.Start, "Descripción");
-        table[0, 0].Style.Bold = true;
-        table[0, 2].Style.Bold = true;
-        table[0, 4].Style.Bold = true;
-        table[0, 0].Style.FontSize = 12;
-        table[0, 2].Style.FontSize = 12;
-        table[0, 4].Style.FontSize = 12;
+        //table[0, 0].Style.Bold = true;
+        //table[0, 2].Style.Bold = true;
+        //table[0, 4].Style.Bold = true;
+        //table[0, 0].Style.FontSize = 12;
+        //table[0, 2].Style.FontSize = 12;
+        //table[0, 4].Style.FontSize = 12;
 
         table[0, 0].Borders.Bottom.LineColor = Color.White;
         table[0, 0].Borders.Top.LineColor = Color.White;
@@ -380,7 +384,7 @@ public class DocMerger
                 table.Rows[tupla].Cells[2].BackgroundColor = Color.Yellow;
                 table.Rows[tupla].Cells[4].BackgroundColor = Color.Yellow;
                 table[tupla, 0].PreferredWidthType = WidthType.Fixed;
-                table[tupla, 0].PreferredWidth = Units.InchesToDocumentsF(11f);
+                table[tupla, 0].PreferredWidth = Units.InchesToDocumentsF(8f);
                 table[tupla, 1].PreferredWidthType = WidthType.Fixed;
                 table[tupla, 1].PreferredWidth = Units.InchesToDocumentsF(1f);
                 table[tupla, 1].BackgroundColor = Color.White;
@@ -393,11 +397,11 @@ public class DocMerger
                 table[tupla, 4].PreferredWidth = Units.InchesToDocumentsF(2f);
 
 
-                wordDoc.Document.InsertText(table[tupla, 0].Range.Start, rw["nombre"].ToString());
+                wordDoc.Document.InsertText(table[tupla, 0].Range.Start, rw["nombre"].ToString().Trim());
                 wordDoc.Document.InsertText(table[tupla, 1].Range.Start, "");
-                wordDoc.Document.InsertText(table[tupla, 2].Range.Start, rw["certificado"].ToString());
+                wordDoc.Document.InsertText(table[tupla, 2].Range.Start, rw["certificado"].ToString().Trim());
                 wordDoc.Document.InsertText(table[tupla, 3].Range.Start, "");
-                wordDoc.Document.InsertText(table[tupla, 4].Range.Start, rw["descripcion"].ToString());
+                wordDoc.Document.InsertText(table[tupla, 4].Range.Start, rw["descripcion"].ToString().Trim());
 
                 tupla += 1;
             }
@@ -417,16 +421,16 @@ public class DocMerger
     {
 
         Plantillas Marco = new Plantillas();
-
-        if (carta == "Carta Envío ramo 9")
+ 
+        if (carta == "Carta envío ramo 9")
         {
             return archivo + Marco.listado[0].UbicacionPlantilla;
         }
-        if (carta == "Carta Envío ramo 123")
+        if (carta == "Carta envío ramo 123")
         {
             return archivo + Marco.listado[1].UbicacionPlantilla;
         }
-        if (carta == "Carta Envío todos excepto 9 y 123")
+        if (carta == "Carta envío todos excepto 9 y 123")
         {
             return archivo + Marco.listado[2].UbicacionPlantilla;
         }

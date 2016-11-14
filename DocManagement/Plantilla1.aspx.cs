@@ -31,11 +31,11 @@ namespace DocManagement
                     }
                 }
                 memoryStream.Position = 0;
-
+                string filenamesend = "attachment; filename="+ _id.ToString() +".docx";
 
                 Response.Clear();
                 Response.ContentType = "Application/msword";
-                Response.AddHeader("Content-Disposition", "attachment; filename=myfile.docx");
+                Response.AddHeader("Content-Disposition", filenamesend);
                 Response.BinaryWrite(memoryStream.ToArray());
                 // myMemoryStream.WriteTo(Response.OutputStream); //works too
                 Response.Flush();

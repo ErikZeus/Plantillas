@@ -1,0 +1,15 @@
+[2016-11-14 11:26:10] - Cargando el documento : This property may take effect only in a Snap application.
+[2016-11-14 11:36:59] - Cargando el documento : This property may take effect only in a Snap application.
+[2016-11-14 11:38:55] - Cargando el documento : This property may take effect only in a Snap application.
+[2016-11-14 11:40:26] - Cargando wordDoc : 2 - index
+[2016-11-14 11:46:37] - Cargando wordDoc : 2 - index
+[2016-11-14 11:49:37] - Cargando wordDoc : 2 - index
+[2016-11-14 11:50:37] - Cargando wordDoc : 2 - index
+[2016-11-14 13:57:26] - Cargando wordDoc : 2 - index
+[2016-11-14 15:25:22] - Cargando el documento : Empty path name is not legal.
+[2016-11-14 15:27:05] - Cargando el documento : Empty path name is not legal.
+[2016-11-14 15:31:24] - Cargando el documento : Empty path name is not legal.
+[2016-11-14 15:33:12] - Cargando el documento : Empty path name is not legal.
+[2016-11-14 15:55:45] - Cargando el documento : String was not recognized as a valid DateTime.
+[2016-11-14 15:56:17] - Cargando el documento : String was not recognized as a valid DateTime.
+[2016-11-14 15:58:43] - Cargando el documento : String was not recognized as a valid DateTime.
